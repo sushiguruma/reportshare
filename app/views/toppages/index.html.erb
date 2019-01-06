@@ -1,0 +1,19 @@
+<% if logged_in? %>
+  <p>ログイン完了　ユーザー名：<%= current_user.name %></p>
+<% else %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>Reportshareへようこそ</h1>
+      <p>Reportshareは研究開発などの進捗内容をチーム内で共有するアプリケーションです。</p>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="text-center">
+        <%= link_to '新規登録', signup_path, class: 'btn btn-info btn-lg' %>
+        <%= link_to 'ログイン', login_path, class: 'btn btn-info btn-lg' %>
+      </div>
+    </div>
+  </div>
+<% end %>
