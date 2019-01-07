@@ -20,11 +20,29 @@ class UsersController < ApplicationController
       render :new
     end
   end
-
+  
   def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    
+    if @user.update(user_params)
+      flash[:success] = 'ユーザー情報を更新しました。'
+      redirect_to root_path
+    else
+      flash[:danger] = 'ユーザー情報の更新に失敗しました。'
+      render :edit
+    end
   end
 
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    
+    flash[:success] = 'ユーザー情報を削除しました。'
+    redirect_to root_url
   end
   
   private
