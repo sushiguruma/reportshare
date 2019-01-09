@@ -1,5 +1,31 @@
 @charset "utf-8";
 
+/* navbar */
 .navbar {
-  background-color: #fff;
+  background-color: #000099;
+}
+
+/* footer */
+footer {
+  margin-top: 40px;
+}
+
+/* toppage */
+.jumbotron {
+  background-color: #F0FFFF;
+}
+
+/* team, task */
+.th_team_normal {
+  word-break: normal;
+}
+
+.team_detail {
+  background-color: #FFF;
+  margin-bottom: 10px;
+  border: 1px solid #808080;
+}
+
+p.normal {
+  word-break: normal;
 }

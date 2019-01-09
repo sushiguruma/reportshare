@@ -1,0 +1,20 @@
+<div class="text-center">
+  <h1>Team一覧</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <table class="table table-bordered">
+      <tr>
+        <th>チーム名</th>
+        <th width=100px>参加</th>
+      </tr>
+      <% @teams.each do |team| %>
+      <tr>
+        <td><%= link_to team.name, team_path(team) %></td>
+        <td width=100px>参加ボタン</td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
