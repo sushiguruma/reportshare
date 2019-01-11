@@ -12,7 +12,7 @@
       <% @teams.each do |team| %>
       <tr>
         <td><%= link_to team.name, team_path(team) %></td>
-        <td width=100px>参加ボタン</td>
+        <td width=100px><%= render 'relationships/join_button', team: team %></td>
       </tr>
       <% end %>
     </table>

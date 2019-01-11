@@ -26,6 +26,18 @@ footer {
   border: 1px solid #808080;
 }
 
+.members_list {
+  border: 1px solid #808080;
+  list-style: none;
+  text-align: center;
+  width: 360px;
+}
+
+/* common */
+.edit_button {
+  margin-top: 10px;
+}
+
 p.normal {
   word-break: normal;
 }

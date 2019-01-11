@@ -8,8 +8,21 @@
     <div class="team_detail">
       <p class="normal"><%= @team.content %></p>
     </div>
+    <%= render 'relationships/join_button', team: @team %>
+    
     <% if current_user == @team.user %>
-      <%= link_to 'チーム内容を編集', edit_team_path(@team), class: 'btn btn-info btn-block' %>
+      <div class="edit_button">
+        <%= link_to 'チーム内容を編集', edit_team_path(@team), class: 'btn btn-info btn-block' %>
+      </div>
     <% end %>
+    
+    <div class="text-center">
+      <h2>参加メンバー</h2>
+      <ul>
+        <% @team.members.each do |member| %>
+          <li class="members_list"><%=link_to member.name, user_path(member) %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>

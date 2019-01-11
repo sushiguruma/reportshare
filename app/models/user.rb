@@ -7,4 +7,19 @@ class User < ApplicationRecord
   has_secure_password
   
   has_many :teams
+  has_many :relationships
+  has_many :joinings, through: :relationships, source: :team
+  
+  def join(team)
+    self.relationships.find_or_create_by(team_id: team.id)
+  end
+  
+  def leave(team)
+    relationship = self.relationships.find_by(team_id: team.id)
+    relationship.destroy if relationship
+  end
+  
+  def join?(team)
+    self.joinings.include?(team)
+  end
 end
