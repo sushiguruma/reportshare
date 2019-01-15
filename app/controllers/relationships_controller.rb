@@ -10,8 +10,13 @@ class RelationshipsController < ApplicationController
 
   def destroy
     team = Team.find(params[:team_id])
-    current_user.leave(team)
-    flash[:success] = 'チームから離脱しました。'
-    redirect_back(fallback_location: root_path)
+    unless current_user == team.user
+      current_user.leave(team)
+      flash[:success] = 'チームから離脱しました。'
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:danger] = 'チーム作成者は離脱できません。'
+      redirect_back(fallback_location: root_path)
+    end
   end
 end

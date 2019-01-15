@@ -6,4 +6,7 @@ class Team < ApplicationRecord
   
   has_many :relationships
   has_many :members, through: :relationships, source: :user
+  has_many :team_themes
+  has_many :follow_themes, through: :team_themes, source: :theme
+  
 end

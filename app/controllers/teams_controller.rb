@@ -18,6 +18,7 @@ class TeamsController < ApplicationController
     @team = current_user.teams.build(team_params)
     
     if @team.save
+      current_user.join(@team)
       flash[:success] = '新しいチームを作成しました。'
       redirect_to root_url
     else

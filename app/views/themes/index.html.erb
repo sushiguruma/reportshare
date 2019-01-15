@@ -1,0 +1,20 @@
+<div class="text-center">
+  <h1>Theme一覧</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <table class="table table-bordered">
+      <tr>
+        <th class="col-md-8">Theme名</th>
+        <th>作成者</th>
+      </tr>
+      <% @themes.each do |theme| %>
+      <tr>
+        <td><%= link_to theme.name, theme_path(theme) %></td>
+        <td><%= link_to theme.user.name, user_path(theme.user) %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

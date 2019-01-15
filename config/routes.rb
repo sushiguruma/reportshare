@@ -7,6 +7,19 @@ Rails.application.routes.draw do
   
   get 'signup', to: 'users#new'
   resources :users, only: [:show, :new, :create, :edit, :update, :destroy]
-  resources :teams
+  
+  resources :teams do
+    resources :themes, only: [:new, :create]
+  end
+  
   resources :relationships, only: [:create, :destroy]
+  
+  resources :themes, only: [:index, :show, :edit, :update, :destroy] do
+    resources :references, only: [:create, :destroy]
+    resources :tasks, only: [:new, :create]
+  end
+  
+  resources :team_themes, only: [:create, :destroy]
+  
+  resources :tasks, only: [:show, :edit, :update, :destroy]
 end

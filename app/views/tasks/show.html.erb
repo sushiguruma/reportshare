@@ -1,0 +1,35 @@
+<div class="text-center">
+  <h1><%= @task.title %></h1>
+  <p>作成ユーザー:<%= @task.user.name %></p>
+  <p>参加チーム:<% @task.theme.followed_teams.each do |team| %><%= team.name %></li><% end %>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h4>概要</h4>
+    <div class="detail">
+      <p class="normal"><%= @task.overview %></p>
+    </div>
+    
+    <h4>目的</h4>
+    <div class="detail">
+      <p class="normal"><%= @task.objective %></p>
+    </div>
+    
+    <h4>方法・作業内容</h4>
+    <div class="detail">
+      <p class="normal"><%= @task.method %></p>
+    </div>
+    
+    <h4>結果</h4>
+    <div class="detail">
+      <p class="normal"><%= @task.result %></p>
+    </div>
+    
+    <% if current_user == @task.user %>
+      <div class ="edit_button">
+        <%=link_to '編集', edit_task_path(@task), class: 'btn btn-info btn-block' %>
+      </div>
+    <% end %>
+  </div>
+</div>

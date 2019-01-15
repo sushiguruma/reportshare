@@ -22,4 +22,7 @@ class User < ApplicationRecord
   def join?(team)
     self.joinings.include?(team)
   end
+  
+  has_many :themes
+  has_many :tasks
 end

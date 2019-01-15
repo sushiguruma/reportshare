@@ -1,0 +1,8 @@
+<%= form_for(theme_path(theme)) do |f| %>
+    <%= hidden_field_tag :theme_id, theme.id %>
+    <%= f.collection_select :team_id, current_user.teams.all, :id, :name, {}, class: 'form-control' %>
+    
+    <div class="edit_button">
+        <%= f.submit 'このチームを追加', class: 'btn btn-secondary btn-block' %>
+    </div>
+<% end %>

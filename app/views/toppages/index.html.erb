@@ -1,6 +1,7 @@
 <% if logged_in? %>
   <p>ログイン完了　ユーザー名：<%= current_user.name %></p>
   <%= link_to '新規チーム作成', new_team_path %>
+  
 <% else %>
   <div class="center jumbotron">
     <div class="text-center">
