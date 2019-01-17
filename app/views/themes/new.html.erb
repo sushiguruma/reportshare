@@ -22,6 +22,11 @@
         <%= f.text_area :objective, class: 'form-control', rows: 5 %>
       </div>
       
+      <div class="form-group">
+        <%= f.label :reference, '参考文献(空欄可)' %>
+        <%= f.text_area :reference, class: 'form-control', rows: 3 %>
+      </div>
+      
       <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
     <% end %>
   </div>

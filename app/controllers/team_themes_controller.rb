@@ -3,7 +3,7 @@ class TeamThemesController < ApplicationController
   
   def create
     theme = Theme.find(params[:theme_id])
-    team = Team.find(params[:team_id])
+    team = Team.find(params[:team][:team_id])
     theme.make_relation(team)
     flash[:success] = 'このテーマとチームを関連づけました。'
     redirect_back(fallback_location: root_url)

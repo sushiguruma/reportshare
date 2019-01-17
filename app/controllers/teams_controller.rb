@@ -20,7 +20,7 @@ class TeamsController < ApplicationController
     if @team.save
       current_user.join(@team)
       flash[:success] = '新しいチームを作成しました。'
-      redirect_to root_url
+      redirect_to team_path(@team)
     else
       flash.now[:danger] = 'チームの作成に失敗しました。'
       render :new
@@ -46,7 +46,7 @@ class TeamsController < ApplicationController
     @team.destroy
     
     flash[:success] = 'チームを削除しました。'
-    redirect_to root_url
+    redirect_to user_path(current_user)
   end
   
   private

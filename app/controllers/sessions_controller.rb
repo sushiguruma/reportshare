@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     password = params[:session][:password]
     if login(name, email, password)
       flash[:success] = 'ログインに成功しました。'
-      redirect_to root_url
+      redirect_to user_path(current_user)
     else
       flash.now[:danger] = 'ログインに失敗しました。'
       render 'new'

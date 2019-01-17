@@ -1,1 +1,107 @@
-<p>未設定</p>
+<% if current_user == @user %>
+  <div class="text-center">
+    <h1>MyPage</h1>
+  </div>
+  <div id="wrapper" class="clearfix">
+    <aside class="left">
+      <div>
+        <h3>実験・作業一覧(投稿済み)</h3>
+        
+        <% if @user.tasks.any? %>
+          <ul>
+            <% @user.tasks.each do |task| %>
+              <li class="members_list"><%= link_to task.title, task_path(task) %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </aside>
+    
+    <div class="main">
+      <div class="user_show_theme">
+        <h3>担当テーマ</h3>
+        
+        <% if @user.themes.any? %>
+          <table class="table table-bordered">
+            <% @user.themes.each do |theme| %>
+              <tbody>
+                <td><%= link_to theme.name, theme_path(theme) %></td>
+                <td width=160px><%= link_to '実験・作業の投稿', new_theme_task_path(theme), class: 'btn btn-info btn-block' %></td>
+              </tbody>
+            <% end %>
+          </table>
+        <% end %>
+      </div>
+      
+      <div class="user_show_team">
+        <h3>所属チーム</h3>
+        
+        <% if @user.joinings.any? %>
+          <table class="table table-bordered">
+            <% @user.joinings.each do |team| %>
+              <tbody>
+                <td><%= link_to team.name, team_path(team) %></td>
+                <td width=160px><%= link_to 'Themeの投稿', new_team_theme_path(team), class: 'btn btn-info btn-block' %></td>
+              </tbody>
+            <% end %>
+          </table>
+        <% end %>
+        
+        <%=link_to '新しいチームを作成', new_team_path, class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+  </div>
+    
+<% else %>
+
+  <div class="text-center">
+    <h1><%= @user.name %>のPage</h1>
+  </div>
+
+  <div id="wrapper" class="clearfix">
+    <aside class="left">
+      <div>
+        <h3>実験・作業一覧(投稿済み)</h3>
+        
+        <% if @user.tasks.any? %>
+          <ul>
+            <% @user.tasks.each do |task| %>
+              <li class="members_list"><%= link_to task.title, task_path(task) %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </aside>
+    
+    <div class="main">
+      <div class="user_show_theme">
+        <h3>担当テーマ</h3>
+        
+        <% if @user.themes.any? %>
+          <table class="table table-bordered">
+            <% @user.themes.each do |theme| %>
+              <tbody>
+                <td><%= link_to theme.name, theme_path(theme) %></td>
+              </tbody>
+            <% end %>
+          </table>
+        <% end %>
+      </div>
+      
+      <div class="user_show_team">
+        <h3>所属チーム</h3>
+        
+        <% if @user.joinings.any? %>
+          <table class="table table-bordered">
+            <% @user.joinings.each do |team| %>
+              <tbody>
+                <td><%= link_to team.name, team_path(team) %></td>
+              </tbody>
+            <% end %>
+          </table>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+  

@@ -54,7 +54,7 @@ class ThemesController < ApplicationController
   private
   
   def theme_params
-    params.require(:theme).permit(:name, :introduction, :objective, :followed_teams)
+    params.require(:theme).permit(:name, :introduction, :objective, :reference, :followed_teams)
   end
   
   def theme_author

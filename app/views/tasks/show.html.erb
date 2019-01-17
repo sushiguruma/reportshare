@@ -1,35 +1,57 @@
 <div class="text-center">
   <h1><%= @task.title %></h1>
-  <p>作成ユーザー:<%= @task.user.name %></p>
-  <p>参加チーム:<% @task.theme.followed_teams.each do |team| %><%= team.name %></li><% end %>
+  <p>作成ユーザー:<%= link_to @task.user.name, user_path(@task.user) %></p>
+  <p>参加チーム:<% @task.theme.followed_teams.each do |team| %><%= link_to team.name, team_path(team) %></li><% end %>
+  <p>投稿日時：<%= @task.created_at %></p>
 </div>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <h4>概要</h4>
     <div class="detail">
-      <p class="normal"><%= @task.overview %></p>
+      <p class="normal"><%= simple_format(@task.overview) %></p>
     </div>
     
     <h4>目的</h4>
     <div class="detail">
-      <p class="normal"><%= @task.objective %></p>
+      <p class="normal"><%= simple_format(@task.objective) %></p>
     </div>
     
     <h4>方法・作業内容</h4>
     <div class="detail">
-      <p class="normal"><%= @task.method %></p>
+      <p class="normal"><%= simple_format(@task.method) %></p>
     </div>
     
     <h4>結果</h4>
     <div class="detail">
-      <p class="normal"><%= @task.result %></p>
+      <p class="normal"><%= simple_format(@task.result) %></p>
     </div>
+    
+    <% unless @task.figure.blank? %>
+      <h4>図・表1</h4>
+      <div class="detail">
+        <%= image_tag @task.figure.url %>
+      </div>
+    <% end %>
     
     <% if current_user == @task.user %>
       <div class ="edit_button">
-        <%=link_to '編集', edit_task_path(@task), class: 'btn btn-info btn-block' %>
+        <%= link_to '編集', edit_task_path(@task), class: 'btn btn-info btn-block' %>
       </div>
     <% end %>
+    
+    <% if @task.comments.any? %>
+      <h4>コメント一覧</h4>
+        <% @task.comments.each do |comment| %>
+          <% if comment.user %>
+            <div class="comment">
+              <p class="normal"><%= simple_format(comment.content) %></p>
+            </div>
+              <p class="normal"><span class="text-muted">posted by <%= link_to comment.user.name, user_path(comment.user) %></span></p>
+            <% end %>
+        <% end %>
+    <% end %>
+    
+    <%= render 'comments/comment', task: @task, comment: @comment %>
   </div>
 </div>

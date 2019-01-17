@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h1>Taskの投稿</h1>
+  <h1>実験・作業の投稿</h1>
   <p>テーマ:<%= @theme.name %></p>
 </div>
 
@@ -30,6 +30,11 @@
       <div class="form-group">
         <%= f.label :result, '結果' %>
         <%= f.text_area :result, class: 'form-control', rows: 100 %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :figure, '図表(画像ファイルで投稿)' %>
+        <%= f.file_field :figure, class: 'form-control' %>
       </div>
       
       <%= f.submit '投稿', class: 'btn btn-info btn-block' %>

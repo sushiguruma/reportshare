@@ -4,6 +4,7 @@ class Theme < ApplicationRecord
   validates :name, presence: true, length: { maximum: 100 }
   validates :introduction, presence: true, length: { maximum: 50000 }
   validates :objective, presence: true, length: { maximum: 50000 }
+  validates :reference, length: { maximum: 2000 }
   
   has_many :team_themes
   has_many :followed_teams, through: :team_themes, source: :team
@@ -22,5 +23,4 @@ class Theme < ApplicationRecord
   end
   
   has_many :tasks
-  has_many :references
 end

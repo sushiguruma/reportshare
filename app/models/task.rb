@@ -7,4 +7,8 @@ class Task < ApplicationRecord
   validates :objective, presence: true, length: { maximum: 50 }
   validates :method, presence: true, length: { maximum: 50000 }
   validates :result, presence: true, length: { maximum: 50000 }
+  
+  has_many :comments
+  
+  mount_uploader :figure, FiguresUploader
 end

@@ -4,6 +4,8 @@ class TasksController < ApplicationController
   
   def show
     @task = Task.find(params[:id])
+    # @comment = Comment.new
+    @comment = @task.comments.build
   end
 
   def new
@@ -26,7 +28,7 @@ class TasksController < ApplicationController
   end
 
   def edit
-    
+      @task.theme = @theme
   end
 
   def update
@@ -43,13 +45,13 @@ class TasksController < ApplicationController
   def destroy
     @task.destory
     flash[:success] = '投稿内容を消去しました。'
-    redirect_to root_url
+    redirect_to user_path(current_user)
   end
   
   private
   
   def task_params
-    params.require(:task).permit(:title, :overview, :objective, :method, :result)
+    params.require(:task).permit(:title, :overview, :objective, :method, :result, :figure)
   end
   
   def task_author

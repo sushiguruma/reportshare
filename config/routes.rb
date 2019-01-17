@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   
   get 'signup', to: 'users#new'
+  
   resources :users, only: [:show, :new, :create, :edit, :update, :destroy]
   
   resources :teams do
@@ -21,5 +22,7 @@ Rails.application.routes.draw do
   
   resources :team_themes, only: [:create, :destroy]
   
-  resources :tasks, only: [:show, :edit, :update, :destroy]
+  resources :tasks, only: [:show, :edit, :update, :destroy] do
+    resources :comments, only: [:create, :destroy]
+  end
 end

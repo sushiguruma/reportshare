@@ -1,6 +1,8 @@
 <% if logged_in? %>
-  <p>ログイン完了　ユーザー名：<%= current_user.name %></p>
-  <%= link_to '新規チーム作成', new_team_path %>
+<div class="text-center">
+  <h1>Reportshareへようこそ</h1>
+  <%= link_to 'Mypageへ', user_path(current_user), class:'btn btn-info btn-lg' %>
+</div>
   
 <% else %>
   <div class="center jumbotron">

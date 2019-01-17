@@ -1,0 +1,7 @@
+<%= form_for([task, comment]) do |f| %>
+  <%= hidden_field_tag :task_id, task.id %>
+  <%= f.label :content, 'コメント(1000字以内)' %>
+  <%= f.text_area :content, class: 'form-control' %>
+  
+  <%= f.submit '投稿', class: 'btn btn-primary' %>
+<% end %>
