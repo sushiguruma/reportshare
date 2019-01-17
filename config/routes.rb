@@ -15,14 +15,13 @@ Rails.application.routes.draw do
   
   resources :relationships, only: [:create, :destroy]
   
-  resources :themes, only: [:index, :show, :edit, :update, :destroy] do
-    resources :references, only: [:create, :destroy]
+  resources :themes, only: [:index, :show, :edit, :update] do
     resources :tasks, only: [:new, :create]
   end
   
-  resources :team_themes, only: [:create, :destroy]
+  resources :team_themes, only: [:create]
   
-  resources :tasks, only: [:show, :edit, :update, :destroy] do
-    resources :comments, only: [:create, :destroy]
+  resources :tasks, only: [:show, :edit, :update] do
+    resources :comments, only: [:create]
   end
 end

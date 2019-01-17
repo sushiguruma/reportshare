@@ -1,7 +1,7 @@
 <div class="text-center">
   <h1><%= @theme.name %></h1>
   <p>作成ユーザー:<%= link_to @theme.user.name, user_path(@theme.user) %></p>
-  <p>参加チーム:<% @theme.followed_teams.each do |team| %><%= link_to team.name, team_path(team) %><% end %></p>
+  <p>参加チーム:<% @theme.followed_teams.each do |team| %><%= link_to team.name, team_path(team) %> <% end %></p>
 </div>
 
 <div class="row">

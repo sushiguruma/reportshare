@@ -10,8 +10,9 @@ class TeamThemesController < ApplicationController
   end
 
   def destroy
-    team = Team.find(params[:team_id])
-    @theme.break_relation(team)
+    theme = Theme.find(params[:theme_id])
+    team = Team.find(params[:team][:team_id])
+    theme.break_relation(team)
     flash[:success] = 'このテーマとチームの関連を解除しました。'
     redirect_back(fallback_location: root_url)
   end
